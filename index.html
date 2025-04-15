@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./arquivo/css/style.css">
+    <title>Página de JS</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Formulário com Máscaras e Validação</h1>
+        <form name="form1"  action="" method="get" data-parsley-validate>
+            <fieldset>
+                <legend>Preencha os campos:</legend>
+                <label for="cpf">Digite o CPF</label>
+                <input type="text" name="cpf" id="cpf" required data-parsley-required-message="Preencha o cpf"><br>
+
+                <label for="telefone">Digite o telefone</label>
+                <input type="text" name="telefone" id="telefone" required data-parsley-required-message="Preencha o telefone"><br>
+
+                <label for="data">Digite a data</label>
+                <input type="text" name="data" id="data" required data-parsley-required-message="Preencha a data"><br>
+
+                <label for="email">Digite o email</label>
+                <input type="email" name="email" id="email" required data-parsley-required-message="Preencha o email" data-parsley-type-message="Digite um email válido"><br>
+
+                <label for="email">Redigite o email</label>
+                <input type="email" name="email2" id="email2" required data-parsley-required-message="Preencha o email" data-parsley-type-message="Digite um email válido" data-parsley-equalto="#email" data-parsley-equalto-message="Os email digitados são diferentes"><br>
+
+                <label for="valor">Digite um valor</label>
+                <input type="text" name="valor" id="valor" required data-parsley-required-message="Preencha um valor"><br>
+
+                <button type="submit">Enviar</button>
+            </fieldset>
+        </form>
+        <h1>Fullscreen Lightbox (Zoom)</h1>
+        <div class="grid">
+            <div class="col">
+            <a href="./arquivo/images/1g.jpg" alt="foto 1" data-fslightbox="galeria">
+                <img src="./arquivo/images/1g.jpg" alt="foto 1">
+            </a>
+            </div>
+            <div class="col">
+                <a href="/1504/arquivo/images/1p.jpg" title="Foto 2" data-fslightbox="galeria">
+                    <img src="/1504/arquivo/images/1p.jpg" alt="Foto 2">
+                </a>
+            </div>
+        </div>
+    </div>
+    <script src="./arquivo/js/vanilla-masker.js"></script>
+    <script src="./arquivo/js/jquery.min.js"></script>
+    <script src="./arquivo/js/parsley.min.js"></script>
+    <script src="/1504/arquivo/js/fslightbox.js"></script>
+    <script>
+        cpf = document.querySelector("#cpf");
+        data = document.querySelector("#data");
+        telefone = document.querySelector("#telefone");
+        valor = document.querySelector("#valor");
+
+        VMasker(valor).maskMoney();
+        VMasker(cpf).maskPattern("999.999.999.-99");
+        VMasker(data).maskPattern("99/99/9999");
+        VMasker(telefone).maskPattern("(99) 99999-9999");
+
+
+    </script>
+</body>
+</html>
